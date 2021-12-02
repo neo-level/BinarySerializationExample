@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class MyData : MonoBehaviour
+[Serializable]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PlayerData
 {
-    // Start is called before the first frame update
-    void Start()
+    public Vector3 position;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+    public string name;
+    public int health;
+    public int shield;
+    
+    public override string ToString()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return $"{name}, health: {health}, shield: {shield} @ {position}";
     }
 }
