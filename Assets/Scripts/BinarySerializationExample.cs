@@ -62,6 +62,8 @@ public class BinarySerializationExample : MonoBehaviour
         
         int starIndex = 0;
         Marshal.Copy(pointer, buffer, starIndex, size);
+        // Free up pointer.
+        Marshal.FreeHGlobal(pointer);
 
         return buffer;
     }
